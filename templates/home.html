@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>My title</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://unpkg.com/htmx.org@1.9.10"
+    integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <!-- <link href="css/style.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+  <p>{{ name }}</p>
+  <table class="table">
+    <tr>
+      <th>Dog name</th>
+      <th>Dog type</th>
+      {% for dog in dogs%}
+    <tr>
+      <td>
+        {{dog.name}}
+      </td>
+      <td>
+        {{dog.type}}</td>
+    </tr>
+    {% endfor %}
+    </tr>
+  </table>
+</body>
+
+</html>

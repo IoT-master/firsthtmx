@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/htmx.org@1.9.10"
+        integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <!-- <link href="css/style.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <div class="mx-4">
+        <p class="text-2xl font-bold mb-4">Movie List</p>
+
+        <table class="min-w-[50%] mb-4">
+            <thread class="boarder-b text-lg">
+                <tr>
+                    <th class="border">Film Name</th>
+                    <th class="border">Director</th>
+                </tr>
+                <tbody class="text-center text-sm" id="table-body">
+                    {% include 'table.html' %}
+                </tbody>
+            </thread>
+        </table>
+
+        <button class="px-3 py-1 bg-blue-600 text-white ml-4" hx-get="/index" hx-target="#table-body"
+            hx-swap="beforeend">Load More</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMX Scroll Trigger</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"
+        integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div hx-get="/load-more" hx-trigger="scroll" hx-trigger-observer=".scroll-trigger">
+        <!-- Content to load -->
+        <p>Scroll down to trigger the load-more action</p>
+
+        <!-- The element that acts as the scroll trigger -->
+        <div class="scroll-trigger"></div>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        // Add a scroll event listener to the document
+        document.addEventListener('scroll', function () {
+            var triggerElement = document.querySelector('.scroll-trigger');
+            var windowHeight = window.innerHeight;
+            var triggerRect = triggerElement.getBoundingClientRect();
+
+            // Check if the trigger element is close to disappearing
+            if (triggerRect.top < windowHeight * 0.2) {
+                // If close to disappearing, trigger the load-more action
+                htmx.trigger(triggerElement, 'scroll');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
